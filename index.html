@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise for My Best Friend</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <script>
+    // Define an array of page URLs
+    const pages = [
+      "ask-her-out.html",   // First page
+      "vt.html",            // Second page
+      "flower.html",        // Third page
+      "3d-rot.html",        // Fourth page
+      "ty.html",            // Fifth page
+      "4-c.html",           // Sixth page
+      "crush.html"          // Seventh page
+    ];
+
+    // Define an array of delays corresponding to each page (in milliseconds)
+    const delays = [
+      1000,   // 1 sec for the first page
+      3000,  // 15 sec for the second page
+      5000,   // 5 sec for the third page
+      10,     // 10 milliseconds for the fourth page
+      16000,  // 16 sec for the fifth page
+      15000,  // 15 sec for the sixth page
+      15000   // 15 sec for the seventh page
+    ];
+
+    // Set the initial page index
+    let currentPage = 0;
+
+    // Function to navigate to the next page after the specified delay
+    function loadNextPage() {
+      if (currentPage < pages.length) {
+        setTimeout(() => {
+          // Navigate to the next page in the array
+          window.location.href = pages[currentPage];
+          currentPage++;
+          loadNextPage(); // Call the function again for the next page
+        }, delays[currentPage]); // Use the delay from the delays array
+      }
+    }
+
+    // Start loading the pages automatically
+    loadNextPage();
+  </script>
+
+</body>
+</html>
