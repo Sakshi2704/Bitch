@@ -23,7 +23,7 @@
     // Define an array of delays corresponding to each page (in milliseconds)
     const delays = [
       1000,   // 1 sec for the first page
-      3000,  // 15 sec for the second page
+      1000,  // 15 sec for the second page
       5000,   // 5 sec for the third page
       10,     // 10 milliseconds for the fourth page
       16000,  // 16 sec for the fifth page
@@ -37,11 +37,14 @@
     // Function to navigate to the next page after the specified delay
     function loadNextPage() {
       if (currentPage < pages.length) {
+        console.log(`Loading ${pages[currentPage]} in ${delays[currentPage]} ms`); // Debug log
         setTimeout(() => {
           // Navigate to the next page in the array
           window.location.href = pages[currentPage];
           currentPage++;
-          loadNextPage(); // Call the function again for the next page
+          if (currentPage < pages.length) {
+            loadNextPage(); // Call the function again for the next page
+          }
         }, delays[currentPage]); // Use the delay from the delays array
       }
     }
